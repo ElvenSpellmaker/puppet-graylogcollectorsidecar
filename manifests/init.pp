@@ -81,6 +81,24 @@ class graylogcollectorsidecar (
           backends          => $backends
       }
     }
+    'Windows': {
+      class {
+        'graylogcollectorsidecar::dist::windows':
+          version           => $version,
+          api_url           => $api_url,
+          tags              => $tags,
+          update_interval   => $update_interval,
+          tls_skip_verify   => $tls_skip_verify,
+          send_status       => $send_status,
+          list_log_files    => $list_log_files,
+          node_id           => $_node_id,
+          collector_id      => $collector_id,
+          log_path          => $log_path,
+          log_rotation_time => $log_rotation_time,
+          log_max_age       => $log_max_age,
+          backends          => $backends
+      }
+    }
     default: {
       err("Family ${::osfamily} not supported currently.")
     }
