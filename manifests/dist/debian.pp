@@ -13,7 +13,10 @@ class graylogcollectorsidecar::dist::debian (
   $log_rotation_time = undef,
   $log_max_age       = undef,
   $backends          = undef,
-  $version           = 'latest'
+  $version           = 'latest',
+  $use_auth          = undef,
+  $username          = undef,
+  $password          = undef
 ) {
 
   if ($::installed_sidecar_version == $version) {
@@ -34,6 +37,9 @@ class graylogcollectorsidecar::dist::debian (
         repository        => 'collector-sidecar',
         release           => $version,
         is_tag            => $is_tag,
+        use_auth          => $use_auth,
+        username          => $username,
+        password          => $password,
         asset             => true,
         asset_filepattern => "${::architecture}\\.deb",
         target            => '/tmp/collector-sidecar.deb'

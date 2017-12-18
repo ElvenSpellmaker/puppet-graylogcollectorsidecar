@@ -39,7 +39,10 @@ class graylogcollectorsidecar (
   $log_rotation_time = undef,
   $log_max_age       = undef,
   $backends          = undef,
-  $version           = 'latest'
+  $version           = 'latest',
+  $use_auth          = undef,
+  $username          = undef,
+  $password          = undef
 ) {
 
   $_node_id = pick($node_id, $::hostname)
@@ -60,7 +63,10 @@ class graylogcollectorsidecar (
           log_path          => $log_path,
           log_rotation_time => $log_rotation_time,
           log_max_age       => $log_max_age,
-          backends          => $backends
+          backends          => $backends,
+          use_auth          => $use_auth,
+          username          => $username,
+          password          => $password
       }
     }
     'RedHat': {
@@ -78,7 +84,10 @@ class graylogcollectorsidecar (
           log_path          => $log_path,
           log_rotation_time => $log_rotation_time,
           log_max_age       => $log_max_age,
-          backends          => $backends
+          backends          => $backends,
+          use_auth          => $use_auth,
+          username          => $username,
+          password          => $password
       }
     }
     'Windows': {
@@ -96,7 +105,10 @@ class graylogcollectorsidecar (
           log_path          => $log_path,
           log_rotation_time => $log_rotation_time,
           log_max_age       => $log_max_age,
-          backends          => $backends
+          backends          => $backends,
+          use_auth          => $use_auth,
+          username          => $username,
+          password          => $password
       }
     }
     default: {
