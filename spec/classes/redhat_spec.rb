@@ -8,7 +8,8 @@ describe 'graylogcollectorsidecar' do
       {
           :osfamily => 'RedHat',
           :architecture => 'x86_64',
-          :installed_sidecar_version => ''
+          :installed_sidecar_version => '',
+          :operatingsystemmajrelease => '7'
       }
     }
 
@@ -47,7 +48,8 @@ describe 'graylogcollectorsidecar' do
       {
           :osfamily => 'RedHat',
           :architecture => 'i386',
-          :installed_sidecar_version => ''
+          :installed_sidecar_version => '',
+          :operatingsystemmajrelease => '7'
       }
     }
 

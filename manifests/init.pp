@@ -50,7 +50,7 @@ class graylogcollectorsidecar (
   case $::osfamily {
     'Debian': {
       class {
-        'graylogcollectorsidecar::dist::debian':
+        '::graylogcollectorsidecar::dist::debian':
           version           => $version,
           api_url           => $api_url,
           tags              => $tags,
@@ -71,7 +71,7 @@ class graylogcollectorsidecar (
     }
     'RedHat': {
       class {
-        'graylogcollectorsidecar::dist::redhat':
+        '::graylogcollectorsidecar::dist::redhat':
           version           => $version,
           api_url           => $api_url,
           tags              => $tags,

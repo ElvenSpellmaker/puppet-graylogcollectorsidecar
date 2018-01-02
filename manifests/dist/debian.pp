@@ -42,7 +42,7 @@ class graylogcollectorsidecar::dist::debian (
         password          => $password,
         asset             => true,
         asset_filepattern => "${::architecture}\\.deb",
-        target            => '/tmp/collector-sidecar.deb'
+        target            => '/tmp/collector-sidecar.deb',
     }
 
     # Install the package
@@ -52,7 +52,7 @@ class graylogcollectorsidecar::dist::debian (
         ensure   => 'installed',
         name     => 'collector-sidecar',
         provider => 'dpkg',
-        source   => '/tmp/collector-sidecar.deb'
+        source   => '/tmp/collector-sidecar.deb',
     }
 
     # Create a sidecar service
@@ -61,7 +61,7 @@ class graylogcollectorsidecar::dist::debian (
       'install_sidecar_service':
         creates => '/etc/init/collector-sidecar.conf',
         command => 'graylog-collector-sidecar -service install',
-        path    => [ '/usr/bin', '/bin' ]
+        path    => [ '/usr/bin', '/bin' ],
     }
 
     Githubreleases::Download['get_sidecar_package']
@@ -92,19 +92,19 @@ class graylogcollectorsidecar::dist::debian (
         enabled            => false,
         binary_path        => '/usr/bin/nxlog',
         configuration_path =>
-        '/etc/graylog/collector-sidecar/generated/nxlog.conf'
+        '/etc/graylog/collector-sidecar/generated/nxlog.conf',
       },
       {
         name               => 'filebeat',
         enabled            => true,
         binary_path        => '/usr/bin/filebeat',
         configuration_path =>
-        '/etc/graylog/collector-sidecar/generated/filebeat.yml'
-      }
+        '/etc/graylog/collector-sidecar/generated/filebeat.yml',
+      },
     ]
   )
 
-  class { 'graylogcollectorsidecar::configure':
+  class { '::graylogcollectorsidecar::configure':
     sidecar_yaml_file =>
       '/etc/graylog/collector-sidecar/collector_sidecar.yml',
     api_url           => $api_url,
@@ -118,7 +118,7 @@ class graylogcollectorsidecar::dist::debian (
     log_path          => $_log_path,
     log_rotation_time => $log_rotation_time,
     log_max_age       => $log_max_age,
-    backends          => $_backends
+    backends          => $_backends,
   } ~> Service['sidecar']
 
   # Start the service
@@ -126,7 +126,7 @@ class graylogcollectorsidecar::dist::debian (
   service {
     'sidecar':
       ensure => running,
-      name   => 'collector-sidecar'
+      name   => 'collector-sidecar',
   }
 
 }

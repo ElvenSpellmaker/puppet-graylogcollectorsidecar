@@ -1,6 +1,6 @@
 {
   "name": "dodevops-graylogcollectorsidecar",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Dennis Ploeger <develop@dieploegers.de>",
   "summary": "Installs and configures the graylog collector sidecar",
   "license": "MIT",
